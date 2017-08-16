@@ -1,7 +1,8 @@
 <template>
   <div class="p-layout">
+    <div class="el-row">
       <!-- 左边导航 -->
-      <aside class="p-layout-sider el-col el-col-4">
+      <div class="p-layout-sider el-col el-col-4">
         <el-menu theme="dark" :unique-opened="true" :default-active="currentRoute" :router="true">
           <el-submenu :index="menu.name" v-for="(menu, index) in menus" :key="menu.name">
             <template slot="title">
@@ -16,7 +17,7 @@
               </el-menu-item>
           </el-submenu>
         </el-menu>
-      </aside>
+      </div>
 
       <!-- 右边内容 -->
       <div class="p-layout-panel el-col el-col-20">
@@ -40,6 +41,7 @@
             <slot></slot>
           </div>
       </div>
+    </div>
   </div>
 </template>
 <script>
@@ -74,11 +76,8 @@ export default {
 
 <style lang="less">
 .p-layout {
-  position: absolute;
+  height: 100%;
   width: 100%;
-  top: 0;
-  bottom: 0;
-  z-index: 100;
 
   .p-layout-sider {
     background-color: rgb(50, 64, 87);
