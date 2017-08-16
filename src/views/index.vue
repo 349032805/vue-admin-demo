@@ -1,6 +1,6 @@
 <template>
   <p-layout>
-    面板
+    welcome!
   </p-layout>
 </template>
 <script>
