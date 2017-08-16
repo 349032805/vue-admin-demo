@@ -5,22 +5,19 @@
         </div>
         <el-row>
             <el-col :span="10" :offset="7">
-                <el-tabs v-model="activeName">
-                    <el-tab-pane label="登录" name="login">
-                        <el-form :model="loginForm" :rules="rules" label-width="100px" ref="loginForm">
-                            <el-form-item label="用户名" prop="username">
-                                <el-input v-model="loginForm.username"></el-input>
-                            </el-form-item>
-                            <el-form-item label="密码" prop="password">
-                                <el-input v-model="loginForm.password" type="password"></el-input>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-button type="primary" @click="submitForm('loginForm')">提交</el-button>
-                            </el-form-item>
-                        </el-form>
-                    </el-tab-pane>
-
-                </el-tabs>
+                 <div class="theme">范骏的博客管理系统-登录</div> 
+                <el-form :model="loginForm" :rules="rules" label-width="100px" ref="loginForm">
+                    <el-form-item label="用户名" prop="username">
+                        <el-input v-model="loginForm.username"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="password">
+                        <el-input v-model="loginForm.password" type="password"></el-input>
+                    </el-form-item>
+                    <el-row style="text-align:center">
+                        <el-button type="primary" @click="submitForm('loginForm')" style="width:100px">登录</el-button>
+                    </el-row>
+                </el-form>
+            
             </el-col>
         </el-row>
     </div>
@@ -69,6 +66,12 @@ export default {
       height: 100%;
       text-align: center;
   }
+
+  .theme {
+      text-align: center;
+      line-height: 60px;
+  }
+
 }
 
 </style>
