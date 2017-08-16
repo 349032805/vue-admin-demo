@@ -1,27 +1,7 @@
 <template>
   <div class="p-layout">
-    <div class="p-layout-topbar clearfix">
-      <div class="p-layout-name" :class="{'sider-mini': isCollapse}">
-        <router-link class="full" to="/" v-if="!isCollapse">pAdmin</router-link>
-        <span class="mini" v-else>P</span>
-      </div>
-      <div class="p-layout-collapse" @click="toggleSider"><i class="fa fa-bars"></i></div>
-      <div class="p-layout-nav">
-        <el-dropdown class="is-user" @command="handleDropdown">
-          <img src="../images/1.jpg" class="p-layout-avatar" alt="">
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="logout">退出</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-      </div>
-    </div>
-    <div
-      class="p-layout-body"
-      :class="{
-        'sider-full': !isCollapse,
-        'sider-mini': isCollapse
-      }">
-      <aside class="p-layout-sider">
+    <div class="p-layout-body">
+      <aside class="p-layout-sider el-col el-col-4">
         <div class="p-layout-user">
           <img alt="" src="../images/1.jpg" class="p-layout-avatar">
           <div>userName</div>
@@ -33,21 +13,21 @@
           :router="true">
           <el-submenu
             :index="menu.name"
-            v-for="(menu, index) in menus">
+            v-for="(menu, index) in menus" :key="menu.name">
             <template slot="title">
               <i v-if="menu.icon" class="fa" :class="'fa-' + menu.icon"></i>
-              <span class="nav-next">\{{menu.text}}</span>
+              <span class="nav-next">{{menu.text}}</span>
             </template>
             <el-menu-item
               :index="subMenu.path"
-              v-for="(subMenu, subIndex) in menu.children">
+              v-for="(subMenu, subIndex) in menu.children" :key="subMenu.name">
                 <i v-if="subMenu.icon" class="fa" :class="'fa-' + subMenu.icon"></i>
-                <span class="nav-next">\{{subMenu.text}}</span>
+                <span class="nav-next">{{subMenu.text}}</span>
               </el-menu-item>
           </el-submenu>
         </el-menu>
       </aside>
-      <div class="p-layout-panel">
+      <div class="p-layout-panel el-col el-col-20">
         <div class="p-layout-content">
           <div class="p-layout-container">
             <div class="p-layout-breadcrumb">
@@ -55,6 +35,16 @@
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item>活动详情</el-breadcrumb-item>
               </el-breadcrumb>
+
+               <div class="p-layout-head">
+                <el-dropdown class="is-user" @command="handleDropdown">
+                  <img src="../images/1.jpg" class="p-layout-avatar" alt="">
+                  <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item command="logout">退出</el-dropdown-item>
+                  </el-dropdown-menu>
+                </el-dropdown>
+              </div> 
+
             </div>
             <div class="p-layout-inner">
               <slot></slot>
@@ -97,69 +87,16 @@ export default {
 </script>
 
 <style lang="less">
-@black: #2a323c;
 @light-black: #324057;
 @extra-light-black: #475669;
 @blue: #03a9f4;
 @gray: #d3dce6;
 @light-gray: #e5e9f2;
-@sider-width: 224px;
-@top-height: 70px;
-@sider-collapse-width: 64px;
+@top-height: 0;
 @transition: all 0.3s ease;
 @cont-padding: 15px;
 
 .p-layout {
-  &-topbar {
-    position: fixed;
-    width: 100%;
-    height: @top-height;
-    line-height: @top-height;
-    background-color: @blue;
-    z-index: 101;
-    color: #fff;
-
-    a {
-      color: @gray;
-    }
-    .el-dropdown-link {
-      color: #fff;
-    }
-  }
-  &-name {
-    width: @sider-width;
-    text-align: center;
-    float: left;
-    background-color: @black;
-    font-family: Helvetica;
-    font-size: 30px;
-    &.sider-mini {
-      width: @sider-collapse-width;
-    }
-    .full {
-      text-decoration: none;
-    }
-    .mini {
-    }
-  }
-  &-nav {
-    float: right;
-    padding-right: 10px;
-    .nav-item {
-      margin-right: 10px;
-      .fa {
-        font-size: 20px;
-      }
-      .el-badge__content.is-fixed {
-        top: 20px;
-      }
-    }
-    .p-layout-avatar {
-      width: 36px;
-      height: 36px;
-      border: 2px solid @gray;
-    }
-  }
   &-avatar {
     border-radius: 50%;
     vertical-align: middle;
@@ -176,27 +113,15 @@ export default {
     }
   }
   &-sider {
-    width: @sider-width;
-    background-color: @black;
-    position: fixed;
-    top: @top-height;
-    left: 0;
-    height: 100%;
-    transition: @transition;
+    background-color: rgb(50, 64, 87);
+    min-height: 100%;
     z-index: 102;
     overflow-x: hidden;
   }
   &-panel,
   &-content {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     background: #f5f5f5;
-    transition: @transition;
-    width: auto;
   }
 
   &-collapse {
@@ -213,34 +138,6 @@ export default {
     top: @top-height;
     bottom: 0;
     z-index: 100;
-    &.sider-full {
-      .p-layout-panel {
-        left: @sider-width;
-      }
-    }
-    &.sider-mini {
-      .p-layout-panel {
-        left: @sider-collapse-width;
-      }
-      .p-layout-sider {
-        width: @sider-collapse-width;
-      }
-      .p-layout-user {
-        display: none;
-      }
-      .el-menu {
-        .el-submenu__icon-arrow,
-        .nav-next {
-          display: none;
-        }
-        &-item {
-          padding: 0 !important;
-        }
-        .el-submenu {
-          text-align: center;
-        }
-      }
-    }
   }
   &-content {
     overflow-y: auto;
@@ -256,10 +153,33 @@ export default {
   }
   &-breadcrumb {
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
-    padding: 25px 15px;
+    height: 60px;
+    line-height: 60px;
     background-color: #fff;
     margin: -15px -15px 0 -15px;
+
+    .p-layout-head {
+      float: right;
+      padding-right: 10px;
+      .nav-item {
+        margin-right: 10px;
+        .fa {
+          font-size: 20px;
+        }
+        .el-badge__content.is-fixed {
+          top: 20px;
+        }
+      }
   }
+
+  
+    .p-layout-avatar {
+      width: 36px;
+      height: 36px;
+      border: 2px solid @gray;
+    }
+  }
+
   &-footer {
     height: 64px;
     line-height: 64px;
