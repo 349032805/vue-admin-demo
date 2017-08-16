@@ -2,6 +2,7 @@
 import login from '../views/login.vue'
 import test from '../views/test.vue'
 import index from '../views/index.vue'
+import editor from '../views/editor.vue'
 export default [
     {
       path: '/',
@@ -12,9 +13,14 @@ export default [
       name: 'login',
       component: login
     },
-     {
+    {
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path: '/editor',
+      name: 'editor',
+      component: editor
     }
 ];
