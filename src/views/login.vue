@@ -27,7 +27,6 @@
 export default {
     data(){
         return {
-            activeName: 'login', //选项卡
             loginForm: {        //表单v-model的值
                 username: '',
                 password: ''
@@ -47,9 +46,13 @@ export default {
         submitForm(formName){
             this.$refs[formName].validate((valid) => {
                 if(valid){ //验证通过
-
+                     this.$router.push({name:'index'});
                 }else{ 
                     //验证不通过
+                       this.$message({
+                            type: 'info',
+                            message: '错误'
+                        });
                     return false;
                 }
             });
