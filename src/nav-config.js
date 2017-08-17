@@ -1,4 +1,10 @@
 const nav = [
+  //  {
+  //   name: 'welcome',
+  //   text: '首页',
+  //   icon: 'th-large',
+  //   path: '/index'
+  // },
   {
     name: 'demo',
     text: '演示',

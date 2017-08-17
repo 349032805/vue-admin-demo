@@ -3,6 +3,7 @@
       <!-- 左边导航 -->
       <div class="p-layout-sider">
         <el-menu theme="dark" :unique-opened="true" :default-active="currentRoute" :router="true">
+          <el-menu-item index="index"><i class="el-icon-menu"></i>首页</el-menu-item>
           <el-submenu :index="menu.name" v-for="(menu, index) in menus" :key="menu.name">
             <template slot="title">
               <i v-if="menu.icon" class="fa" :class="'fa-' + menu.icon"></i>
@@ -51,8 +52,7 @@ export default {
   data () {
     return {
       menus,
-      currentRoute: this.$router.history.current.fullPath,
-      isCollapse: false
+      currentRoute: this.$router.history.current.fullPath
     }
   },
   created () {
@@ -60,14 +60,17 @@ export default {
   },
 
   methods: {
-    toggleSider () {
-      this.isCollapse = !this.isCollapse
-    },
     handleDropdown (cmd) {
       if (cmd === 'logout') {
         this.$router.replace({ name: 'login' })
       }
-    }
+    },
+     handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
+      }
   }
 }
 </script>
