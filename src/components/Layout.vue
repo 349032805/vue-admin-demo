@@ -1,8 +1,7 @@
 <template>
   <div class="p-layout">
-    <div class="el-row">
       <!-- 左边导航 -->
-      <div class="p-layout-sider el-col el-col-4">
+      <div class="p-layout-sider">
         <el-menu theme="dark" :unique-opened="true" :default-active="currentRoute" :router="true">
           <el-submenu :index="menu.name" v-for="(menu, index) in menus" :key="menu.name">
             <template slot="title">
@@ -20,7 +19,7 @@
       </div>
 
       <!-- 右边内容 -->
-      <div class="p-layout-panel el-col el-col-20">
+      <div class="p-layout-panel">
         <div class="p-layout-breadcrumb">
           <el-breadcrumb separator="/" class="float-left" style="line-height: inherit">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -41,7 +40,6 @@
             <slot></slot>
           </div>
       </div>
-    </div>
   </div>
 </template>
 <script>
@@ -82,8 +80,12 @@ export default {
   .p-layout-sider {
     background-color: rgb(50, 64, 87);
     min-height: 100%;
+    width: 16%;
     overflow-x: hidden;
     overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 
   .p-layout-panel {
@@ -91,6 +93,7 @@ export default {
     overflow-x: hidden;
     overflow-y: auto;
     background: #fff;
+    padding-left: 16%;
 
     .p-layout-breadcrumb {
       height: 60px;
