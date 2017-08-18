@@ -2,30 +2,37 @@
   <div class="p-layout">
       <!-- 左边导航 -->
       <div class="p-layout-sider">
-        <el-menu theme="dark" :unique-opened="true" :default-active="currentRoute" :router="true">
-          <el-menu-item index="index"><i class="el-icon-menu"></i>首页</el-menu-item>
-          <el-submenu :index="menu.name" v-for="(menu, index) in menus" :key="menu.name">
-            <template slot="title">
-              <i v-if="menu.icon" class="fa" :class="'fa-' + menu.icon"></i>
-              <span class="nav-next">{{menu.text}}</span>
-            </template>
-            <el-menu-item
-              :index="subMenu.path"
-              v-for="(subMenu, subIndex) in menu.children" :key="subMenu.name">
-                <i v-if="subMenu.icon" class="fa" :class="'fa-' + subMenu.icon"></i>
-                <span class="nav-next">{{subMenu.text}}</span>
-              </el-menu-item>
-          </el-submenu>
-        </el-menu>
+
+      <el-menu theme="dark" :unique-opened="true" :default-active="currentRoute" :router="true" @open="handleOpen" @close="handleClose">
+        <el-menu-item index="index"><i class="fa fa-home fa-lg"></i> 首页</el-menu-item>
+        <el-submenu :index="menu.text" v-for="(menu, index) in menus" :key="menu.index">
+          <template slot="title">
+            <i v-if="menu.icon" class="fa" :class="'fa-' + menu.icon"></i>
+            <span class="nav-next">{{menu.text}}</span>
+          </template>
+          <el-menu-item
+            :index="subMenu.path"
+            v-for="(subMenu, subIndex) in menu.children" :key="subMenu.index">
+              <i v-if="subMenu.icon" class="fa" :class="'fa-' + subMenu.icon"></i>
+              <span class="nav-next">{{subMenu.text}}</span>
+            </el-menu-item>
+        </el-submenu>
+      </el-menu>  
+
       </div>
 
       <!-- 右边内容 -->
       <div class="p-layout-panel">
+        <!-- 关于面包屑导航的处理,github上有的在每个页面设置写死的导航,有的用vuex进行的复杂处理.
+        个人感觉最好的方式是在左侧的导航的时候,通过封装的组建获取子菜单的和父菜单的名称传入,
+        在这里尝试监听路由变化来判断当前的完整导航,参见main.js -->
+        <!-- 有更好的方法请告诉我,@qq 349032805 -->
         <div class="p-layout-breadcrumb">
-          <el-breadcrumb separator="/" class="float-left" style="line-height: inherit">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-          </el-breadcrumb>
+           <el-breadcrumb separator="/" class="float-left" style="line-height: inherit">
+            <el-breadcrumb-item :to="{ path: '/index' }" v-if="!$menuArr || $menuArr.length==0"><span class="first-page">首页</span></el-breadcrumb-item>
+            <el-breadcrumb-item v-for="nav in $menuArr" :key="nav.index">{{nav}}</el-breadcrumb-item>
+          </el-breadcrumb> 
+
 
           <div class="p-layout-head">
             <el-dropdown class="is-user" @command="handleDropdown">
@@ -66,10 +73,8 @@ export default {
       }
     },
      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
       }
   }
 }
@@ -104,6 +109,10 @@ export default {
       background-color: #eff2f7;
       padding-left: 20px;
       padding-right: 30px;
+
+      .first-page{
+        color:#48576a;
+      }
 
       .p-layout-head {
         float: right;

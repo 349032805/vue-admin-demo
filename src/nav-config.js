@@ -9,7 +9,6 @@ const nav = [
     name: 'demo',
     text: '演示',
     icon: 'gear',
-    path: '/user',
     children: [
       {
         name: 'user',

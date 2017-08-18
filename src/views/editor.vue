@@ -99,7 +99,9 @@
         }
       }
     },
-
+    created(){
+    
+    },
     watch: {
       'ruleForm.content' (val) {
         console.log(val)
