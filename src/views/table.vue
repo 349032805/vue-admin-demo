@@ -1,11 +1,10 @@
 <template>
   <p-layout>
-    <p>welcome!</p>
-    <p>简介:</p>
+    <p>table!</p>
   </p-layout>
 </template>
 <script>
   export default {
-    name: 'index'
+    name: 'table'
   }
 </script>

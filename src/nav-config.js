@@ -5,22 +5,46 @@ const nav = [
   //   icon: 'th-large',
   //   path: '/index'
   // },
+   {
+    name: 'table',
+    text: '表格',
+    icon: 'th-large',
+    children: [
+      {
+        name: 'table',
+        path: '/table',
+        icon: 'table',
+        text: '基础表格'
+      }
+    ]
+  },
   {
-    name: 'demo',
-    text: '演示',
+    name: 'form',
+    text: '表单',
     icon: 'gear',
     children: [
       {
-        name: 'user',
-        path: '/user',
-        icon: 'user',
-        text: '用户管理'
+        name: 'form',
+        path: '/form',
+        icon: 'list-alt',
+        text: '基本表单'
       }, {
         name: 'editor',
         path: '/editor',
         icon: 'file',
-        text: '富文本'
+        text: '编辑器tinymce'
+      },{
+        name: 'editor',
+        path: '/editor2',
+        icon: 'file',
+        text: '编辑器Quill'
+      },{
+        name: 'upload',
+        path: '/upload',
+        icon: 'cloud-upload',
+        text: '文件上传'
       }
+      
     ]
   }
 ]

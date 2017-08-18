@@ -13,7 +13,8 @@ import 'element-ui/lib/theme-default/index.css'
 import Layout from './components/Layout'
 import Editor from './components/Editor'
 
-import NavArr from './nav-config'
+// import NavArr from './nav-config'
+import NavArr from './nav-config2'
 
 Vue.component(Layout.name, Layout)
 Vue.component(Editor.name, Editor)
@@ -39,13 +40,30 @@ router.beforeEach((to,from,next)=>{
   //通过地址栏的路由来解析
   let goto = to.fullPath;
 
+  // NavArr.forEach(nav=>{
+  //  nav.children.forEach(childObj=>{
+  //    if(childObj.path == goto){
+  //      Vue.prototype.$menuArr.push(nav.text);
+  //      Vue.prototype.$menuArr.push(childObj.text);
+  //    }
+  //  })
+  // })
+
   NavArr.forEach(nav=>{
-   nav.children.forEach(child=>{
-     if(child.path == goto){
-       Vue.prototype.$menuArr.push(nav.text);
-       Vue.prototype.$menuArr.push(child.text);
-     }
-   })
+    if(nav.path == goto){
+      Vue.prototype.$menuArr.push(nav.title);
+      return;
+    }
+    if(nav.subs){
+       nav.subs.forEach(childObj=>{
+        if(childObj.path == goto){
+          Vue.prototype.$menuArr.push(nav.title);
+          Vue.prototype.$menuArr.push(childObj.title);
+            return;
+        }
+      })
+    }
+  
   })
 
 

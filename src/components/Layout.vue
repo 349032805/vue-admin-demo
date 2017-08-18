@@ -3,7 +3,7 @@
       <!-- 左边导航 -->
       <div class="p-layout-sider">
 
-      <el-menu theme="dark" :unique-opened="true" :default-active="currentRoute" :router="true" @open="handleOpen" @close="handleClose">
+       <!-- <el-menu theme="dark" :unique-opened="true" :default-active="currentRoute" :router="true" @open="handleOpen" @close="handleClose">
         <el-menu-item index="index"><i class="fa fa-home fa-lg"></i> 首页</el-menu-item>
         <el-submenu :index="menu.text" v-for="(menu, index) in menus" :key="menu.index">
           <template slot="title">
@@ -17,7 +17,26 @@
               <span class="nav-next">{{subMenu.text}}</span>
             </el-menu-item>
         </el-submenu>
-      </el-menu>  
+      </el-menu>    -->
+
+       <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
+            <template v-for="item in menus">
+                <template v-if="item.subs">
+                    <el-submenu :index="item.index">
+                        <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
+                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
+                        </el-menu-item>
+                    </el-submenu>
+                </template>
+                <template v-else>
+                    <el-menu-item :index="item.index">
+                        <i :class="item.icon"></i>{{ item.title }}
+                    </el-menu-item>
+                </template>
+            </template>
+        </el-menu> 
+
+
 
       </div>
 
@@ -51,7 +70,8 @@
   </div>
 </template>
 <script>
-import menus from '../nav-config'
+// import menus from '../nav-config'
+import menus from '../nav-config2'
 
 export default {
   name: 'p-layout',
@@ -65,7 +85,11 @@ export default {
   created () {
    
   },
-
+  computed:{
+    onRoutes(){
+        return this.$route.path.replace('/','');
+    }
+  },
   methods: {
     handleDropdown (cmd) {
       if (cmd === 'logout') {
