@@ -23,14 +23,15 @@
             <template v-for="item in menus">
                 <template v-if="item.subs">
                     <el-submenu :index="item.index">
-                        <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
-                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
+                        <template slot="title"><i :class="item.icon"></i> {{ item.title }}</template>
+                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">
+                          <i :class="subItem.icon"></i> {{ subItem.title }}
                         </el-menu-item>
                     </el-submenu>
                 </template>
                 <template v-else>
                     <el-menu-item :index="item.index">
-                        <i :class="item.icon"></i>{{ item.title }}
+                        <i :class="item.icon"></i> {{ item.title }}
                     </el-menu-item>
                 </template>
             </template>

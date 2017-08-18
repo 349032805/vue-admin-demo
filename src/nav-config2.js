@@ -1,53 +1,53 @@
 const nav = [
   {
-    icon: 'fa fa-home fa-lg',
+    icon: 'el-icon-star-on',
     index: 'index',
     path: '/index',
     title: '首页'
   },{
-    icon: 'fa fa-table',
+    icon: 'el-icon-menu',
     index: '2',
     title: '表格',
     subs: [
         {
-            index: 'table',
-            path:'/table',
-            icon: 'fa fa-icon-table',
+            index: 'baseTable',
+            path:'/baseTable',
+            icon: '',
             title: '基础表格'
         }
     ]
   },{
-    icon: 'fa fa-table',
+    icon: 'el-icon-document',
     index: '3',
     title: '表单',
     subs: [
         {
-            index: 'form',
-            path:'/form',
-            icon: 'fa fa-list-alt',
+            index: 'baseForm',
+            path:'/baseForm',
+            icon: '',
             title: '基本表单'
         },{
-            index: 'editor',
-            path:'/editor',
-            icon: 'fa fa-icon-edit',
+            index: 'editTinymce',
+            path:'/editTinymce',
+            icon: '',
             title: '编辑器tinymce'
         },{
-            index: 'editor2',
-            path:'/editor2',
-            icon: 'fa fa-icon-edit',
+            index: 'editQuill',
+            path:'/editQuill',
+            icon: '',
             title: '编辑器Quill'
         },{
             index: 'upload',
             path:'/upload',
-            icon: 'fa fa-cloud-upload',
+            icon: '',
             title: '文件上传'
-        }, {
-            icon: 'fa fa-icon-github',
-            index: 'test',
-            path: '/test',
-            title: '测试'
         }
     ]
+  }, {
+    icon: 'el-icon-more',
+    index: 'test',
+    path: '/test',
+    title: '测试'
   }
 
 ]
