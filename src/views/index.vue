@@ -1,7 +1,6 @@
 <template>
   <p-layout>
     <p>welcome!</p>
-    <p>简介:</p>
   </p-layout>
 </template>
 <script>
