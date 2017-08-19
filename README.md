@@ -10,4 +10,8 @@ npm run dev
 
 ## 项目截图 ##
 
-![Image text](https://github.com/349032805/vue-admin-demo/blob/master/src/images/2.jpg)
+![Image text](https://github.com/349032805/vue-admin-demo/blob/master/screenshots/screen1.png)
+
+![Image text](https://github.com/349032805/vue-admin-demo/blob/master/screenshots/screen2.png)
+
+![Image text](https://github.com/349032805/vue-admin-demo/blob/master/screenshots/screen3.png)
