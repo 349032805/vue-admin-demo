@@ -157,7 +157,7 @@ export default {
     }
   }
   .p-layout-container {
-    padding: 15px;
+    padding: 15px 20px;
   }
 }
 </style>
