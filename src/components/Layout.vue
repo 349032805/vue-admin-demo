@@ -53,14 +53,14 @@
             <el-breadcrumb-item v-for="nav in $menuArr" :key="nav.index">{{nav}}</el-breadcrumb-item>
           </el-breadcrumb> 
 
-
           <div class="p-layout-head">
             <el-dropdown class="is-user" @command="handleDropdown">
-              <img src="../images/1.jpg" class="p-layout-avatar">
+              <img src="../images/leaf.jpg" class="p-layout-avatar"> 
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="logout">退出</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
+            <span class="nickname">fantasy</span>
           </div> 
         </div>
 
@@ -148,6 +148,10 @@ export default {
           border-radius: 50%;
           vertical-align: middle;
           cursor: pointer;
+        }
+        .nickname {
+          margin-left:5px;
+          color: #666;
         }
       }
     }
