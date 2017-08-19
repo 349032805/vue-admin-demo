@@ -12,11 +12,11 @@
         </div>
         <el-table :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column prop="date" label="发行日期" sortable header-align="center"></el-table-column>
+            <el-table-column prop="date" label="发行日期" sortable align="center"></el-table-column>
             <el-table-column prop="name" label="歌名" header-align="center"></el-table-column>
             <el-table-column prop="belong" label="所属专辑" header-align="center"></el-table-column>
             <el-table-column prop="singer" label="star" header-align="center"></el-table-column>
-            <el-table-column label="操作" width="180">
+            <el-table-column label="操作" width="180" align="center">
                 <template scope="scope">
                     <el-button size="small"
                             @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -29,7 +29,7 @@
             <el-pagination
                     @current-change ="handleCurrentChange"
                     layout="prev, pager, next"
-                    :total="100">
+                    :total="80">
             </el-pagination>
         </div>
     </div>
@@ -62,9 +62,6 @@
       search(){
           this.is_search = true;
       },
-      // formatter(row, column) {
-      //     return row.address;
-      // },
       filterTag(value, row) {
           return row.tag === value;
       },
