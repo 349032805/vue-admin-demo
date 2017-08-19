@@ -75,7 +75,7 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
+<style lang="less">
 	.form-box {
     padding-left: 50px;
     padding-top: 30px;

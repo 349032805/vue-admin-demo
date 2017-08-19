@@ -89,7 +89,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .handle-box{
   margin-bottom: 20px;
   .handle-select{

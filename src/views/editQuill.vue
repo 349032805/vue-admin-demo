@@ -39,9 +39,6 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
-  .plugins-tips{
-    padding:20px 10px;
-    margin-bottom: 20px;
-  }
+<style lang="less">
+ 
 </style>
